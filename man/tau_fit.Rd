@@ -7,13 +7,31 @@
 tau_fit(data, t)
 }
 \arguments{
-\item{data}{a data.frame consisting of \code{arm}, \code{surv.time}, \code{event}}
+\item{data}{a data.frame consisting of \code{arm}, \code{surv.time}, \code{event}.}
 
-\item{t}{the specified truncation time}
+\item{t}{the specified truncation time.}
 }
 \value{
 a list with components
+\tabular{ll}{
+\code{N0} \tab number of individuals with arm=0 \cr
+\tab \cr
+\code{N1} \tab number of individuals with arm=1 \cr
+\tab \cr
+\code{t} \tab the specified truncation time \cr
+\tab \cr
+\code{var.r} \tab estimated variance under random grouping design \cr
+\tab \cr
+\code{var.f} \tab estimated variance under fixed grouping design \cr
+\tab \cr
+\code{obj} \tab a list of components to \cr
+\tab \cr
+\code{class}
+}
 }
 \description{
-Two-Sample inference based on local Kendall's tau
+calculate the necessary elements to do inference based on tau
+}
+\details{
+The estimating formula for tau and variance are proposed by Yi-Cheng Tai, Weijing Wang and Martin T. Wells.
 }

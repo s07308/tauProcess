@@ -1,12 +1,30 @@
 #' Two-Sample inference based on local Kendall's tau
-#'
-#' @param data a data.frame consisting of `arm`, `surv.time`, `event`
-#' @param t the specified truncation time
+#' @description calculate the necessary elements to do inference based on tau
+#' @param data a data.frame consisting of `arm`, `surv.time`, `event`.
+#' @param t the specified truncation time.
 #'
 #' @return a list with components
+#' \tabular{ll}{
+#' \code{N0} \tab number of individuals with arm=0 \cr
+#' \tab \cr
+#' \code{N1} \tab number of individuals with arm=1 \cr
+#' \tab \cr
+#' \code{t} \tab the specified truncation time \cr
+#' \tab \cr
+#' \code{var.r} \tab estimated variance under random grouping design \cr
+#' \tab \cr
+#' \code{var.f} \tab estimated variance under fixed grouping design \cr
+#' \tab \cr
+#' \code{obj} \tab a list of components to \cr
+#' \tab \cr
+#' \code{class}
+#' }
+#'
+#' @details The estimating formula for tau and variance are proposed by Yi-Cheng Tai, Weijing Wang and Martin T. Wells.
+#'
 #' @export
 #'
-#' @examples
+#'
 tau_fit <- function(data, t) {
   n <- length(data$surv.time)
   N0 <- sum(data$arm == 0)
@@ -62,6 +80,7 @@ tau_fit <- function(data, t) {
   var.f <- var_fixed(data, obj.fit)
 
 
-  return(list(var.r = var.r, var.f = var.f, obj = obj.fit, class = "tau.fit",
-              N0 = N0, N1 = N1, t = t))
+  return(list(N0 = N0, N1 = N1, t = t,
+              var.r = var.r, var.f = var.f, obj = obj.fit,
+              class = "tau.fit"))
 }

@@ -1,15 +1,15 @@
-#' Title
+#' Summarize the inference of local Kendall's tau
 #'
-#' @param obj
-#' @param conf.int
+#' @param obj an object of class "tauFit"
+#' @param conf.int the significance level of the confidence interval
 #'
-#' @return
+#' @return an object of class "summaryTauFit"
 #' @export
 #'
-#' @examples
+#' @examples "Later"
 summary.tauFit <- function(obj, conf.int = 0.95) {
   tau.fit <- obj
-  tau <- tau.fit$obj$tau
+  tau <- tau.fit$tau
   se.r <- sqrt(tau.fit$var.r)
   se.f <- sqrt(tau.fit$var.f)
   rval <- list(N0 = tau.fit$N0, N1 = tau.fit$N1, t = tau.fit$t)

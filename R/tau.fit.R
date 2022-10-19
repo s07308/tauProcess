@@ -3,7 +3,7 @@
 #' @param data a data.frame consisting of `arm`, `surv.time`, `event`.
 #' @param t the specified truncation time.
 #'
-#' @return a list with components
+#' @return an object of class "tauFit" with components
 #' \tabular{ll}{
 #' \code{N0} \tab number of individuals with arm=0 \cr
 #' \tab \cr
@@ -11,13 +11,11 @@
 #' \tab \cr
 #' \code{t} \tab the specified truncation time \cr
 #' \tab \cr
-#' \code{var.r} \tab estimated variance under random grouping design \cr
+#' \code{tau} \tab the estiamted local Kendall's tau measure \cr
 #' \tab \cr
-#' \code{var.f} \tab estimated variance under fixed grouping design \cr
+#' \code{var.r} \tab the estimated variance under random grouping design \cr
 #' \tab \cr
-#' \code{obj} \tab a list of components to \cr
-#' \tab \cr
-#' \code{class}
+#' \code{var.f} \tab the estimated variance under fixed grouping design \cr
 #' }
 #'
 #' @details The estimating formula for tau and variance are proposed by Yi-Cheng Tai, Weijing Wang and Martin T. Wells.
@@ -25,7 +23,7 @@
 #' @export
 #'
 #'
-tau_fit <- function(data, t) {
+tau.fit <- function(data, t) {
   n <- length(data$surv.time)
   N0 <- sum(data$arm == 0)
   N1 <- sum(data$arm == 1)
@@ -76,15 +74,15 @@ tau_fit <- function(data, t) {
                   orderable.indicator = orderable.indicator,
                   conc.ipcw = conc.ipcw,
                   tau = tau.est)
-  var.r <- var_random(data, obj.fit)
-  var.f <- var_fixed(data, obj.fit)
+  var.r <- var.random(data, obj.fit)
+  var.f <- var.fixed(data, obj.fit)
 
   rval <- list(N0 = N0,
                N1 = N1,
                t = t,
+               tau = tau.est,
                var.r = var.r,
-               var.f = var.f,
-               obj = obj.fit)
+               var.f = var.f)
 
   class(rval) <- "tauFit"
 

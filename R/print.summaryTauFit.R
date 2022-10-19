@@ -1,11 +1,8 @@
-#' Title
+#' Print method for summaryTauFit objects
 #'
-#' @param x
+#' @param x an object of class "summaryTauFit"
 #'
-#' @return
 #' @export
-#'
-#' @examples
 print.summaryTauFit <- function(x) {
   cat(" N0=", x$N0, " N1=", x$N1, " The truncation time is specified as", x$t, "\n")
   cat("\n")

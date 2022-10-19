@@ -2,4 +2,4 @@
 
 S3method(print,summaryTauFit)
 S3method(summary,tauFit)
-export(tau_fit)
+export(tau.fit)

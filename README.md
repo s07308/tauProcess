@@ -6,7 +6,15 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of tauProcess is to …
+In clinical trials, the non-proportional hazard (NPH) scenarios are
+commonly encountered. The classical hazard ratio is no longer a
+meaningful treatment effect measure. Furthermore, the commonly used
+logrank test may lose its power under NPH. Several effect measures and
+testing procedures are proposed to overcome these problems, including
+weighted logrank, restricted mean survival time (RMST) and maxcombo
+tests. The local Kendall’s tau measure we proposed is intuitive and
+clinically meaningful. The inference procedure based on local Kendall’s
+tau is also provided.
 
 ## Installation
 
@@ -17,6 +25,8 @@ You can install the development version of tauProcess from
 # install.packages("devtools")
 devtools::install_github("s07308/tauProcess")
 ```
+
+## Usage
 
 ## Example
 

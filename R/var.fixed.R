@@ -1,4 +1,4 @@
-var_fixed <- function(data, obj) {
+var.fixed <- function(data, obj) {
   n <- nrow(data)
   p0 <- mean(data$arm == 0)
   p1 <- 1 - p0

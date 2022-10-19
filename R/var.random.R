@@ -1,4 +1,4 @@
-var_random <- function(data, obj) {
+var.random <- function(data, obj) {
   n <- nrow(data)
   var1 <- var1.random(data = data, obj = obj)
   var2 <- var2.random(data = data, obj = obj)

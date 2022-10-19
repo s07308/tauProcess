@@ -1,4 +1,13 @@
-summary_tau_fit <- function(obj, conf.int = 0.95) {
+#' Title
+#'
+#' @param obj
+#' @param conf.int
+#'
+#' @return
+#' @export
+#'
+#' @examples
+summary.tauFit <- function(obj, conf.int = 0.95) {
   tau.fit <- obj
   tau <- tau.fit$obj$tau
   se.r <- sqrt(tau.fit$var.r)
@@ -32,7 +41,7 @@ summary_tau_fit <- function(obj, conf.int = 0.95) {
     rval$conf.int <- tmp
   }
 
-  class(rval) <- "summary.tau.fit"
+  class(rval) <- "summaryTauFit"
 
   return(rval)
 }

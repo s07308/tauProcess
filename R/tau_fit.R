@@ -79,8 +79,14 @@ tau_fit <- function(data, t) {
   var.r <- var_random(data, obj.fit)
   var.f <- var_fixed(data, obj.fit)
 
+  rval <- list(N0 = N0,
+               N1 = N1,
+               t = t,
+               var.r = var.r,
+               var.f = var.f,
+               obj = obj.fit)
 
-  return(list(N0 = N0, N1 = N1, t = t,
-              var.r = var.r, var.f = var.f, obj = obj.fit,
-              class = "tau.fit"))
+  class(rval) <- "tauFit"
+
+  return(rval)
 }

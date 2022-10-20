@@ -4,10 +4,6 @@ Version: 0.0.0.1000
 Authors@R: 
     person("Yi-Cheng", "Tai", , "s07308@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0003-3298-0552"))
-    person("Weijing", "Wang", , "wjwang@stat.nycu.edu.tw", role = c("aut"),
-           comment = c(ORCID = "0000-0001-6569-083X"))
-    person("Martin T.", "Wells", , "mtw1@cornell.edu", role = c("aut"),
-           comment = c(ORCID = "0000-0002-9750-9529"))
 Description: We propose a clinically meaningful measure of effect based on Kendall's tau
   with censored data. The corresponding inference procedure is also provided. The plot of tau process
   is an intuitive tool to monitor the evolution of treatment effect.

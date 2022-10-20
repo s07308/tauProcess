@@ -8,9 +8,9 @@
 #' @format ## `Inotuzumab`
 #' A data frame with 1621 rows and 3 columns:
 #' \describe{
-#'   \item{surv.time}{the survival of each subject in the trial}
-#'   \item{event}{censoring indicator}
-#'   \item{arm}{treatment arm}
+#'   \item{surv.time}{the survival of each subject in the trial (months)}
+#'   \item{event}{censoring indicator (1: observed; 0: censored)}
+#'   \item{arm}{treatment arm (1: treatment; 0: control)}
 #' }
 #' @source <https://www.nejm.org/doi/full/10.1056/nejmoa1509277>
 "Inotuzumab"

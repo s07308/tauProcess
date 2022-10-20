@@ -4,12 +4,14 @@
 \alias{summary.tauFit}
 \title{Summarize the inference of local Kendall's tau}
 \usage{
-\method{summary}{tauFit}(obj, conf.int = 0.95)
+\method{summary}{tauFit}(object, conf.int = 0.95, ...)
 }
 \arguments{
-\item{obj}{an object of class "tauFit"}
+\item{object}{an object of class "tauFit"}
 
 \item{conf.int}{the significance level of the confidence interval}
+
+\item{...}{additional arguments}
 }
 \value{
 an object of class "summaryTauFit"

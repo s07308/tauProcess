@@ -23,7 +23,11 @@
 #' @export
 #'
 #'
-tau.fit <- function(data, t) {
+tau.fit <- function(data, t = numeric()) {
+  stopifnot(length(t) <= 1)
+  stopifnot(is.numeric(t))
+  stopifnot(is.data.frame(data))
+
   n <- length(data$surv.time)
   N0 <- sum(data$arm == 0)
   N1 <- sum(data$arm == 1)
@@ -31,6 +35,10 @@ tau.fit <- function(data, t) {
   event.0 <- data$event[data$arm == 0]
   surv.time.1 <- data$surv.time[data$arm == 1]
   event.1 <- data$event[data$arm == 1]
+
+  if(length(t) == 0) {
+    t <- min(c(max(surv.time.0), max(surv.time.1)))
+  }
 
   ## estiamte the survival functions of censoring variable
   G0.fit <- survival::survfit(survival::Surv(surv.time.0, 1 - event.0) ~ 1)

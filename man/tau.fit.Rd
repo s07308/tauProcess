@@ -4,7 +4,7 @@
 \alias{tau.fit}
 \title{Two-Sample inference based on local Kendall's tau}
 \usage{
-tau.fit(data, t)
+tau.fit(data, t = numeric())
 }
 \arguments{
 \item{data}{a data.frame consisting of \code{arm}, \code{surv.time}, \code{event}.}

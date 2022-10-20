@@ -4,10 +4,12 @@
 \alias{print.summaryTauFit}
 \title{Print method for summaryTauFit objects}
 \usage{
-\method{print}{summaryTauFit}(x)
+\method{print}{summaryTauFit}(x, ...)
 }
 \arguments{
 \item{x}{an object of class "summaryTauFit"}
+
+\item{...}{additional arguments}
 }
 \description{
 Print method for summaryTauFit objects

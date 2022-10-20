@@ -1,9 +1,10 @@
 #' Print method for summaryTauFit objects
 #'
 #' @param x an object of class "summaryTauFit"
+#' @param ... additional arguments
 #'
 #' @export
-print.summaryTauFit <- function(x) {
+print.summaryTauFit <- function(x, ...) {
   cat(" N0=", x$N0, " N1=", x$N1, " The truncation time is specified as", x$t, "\n")
   cat("\n")
   cat("Random grouping design:\n")

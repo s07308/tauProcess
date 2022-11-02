@@ -1,7 +1,7 @@
 #' Print method for summaryTauFit objects
 #'
 #' @param x an object of class "summaryTauFit"
-#' @param ... additional arguments
+#' @param ... additional arguments passed to underlying `printCoefmat` method.
 #'
 #' @export
 print.summaryTauFit <- function(x, ...) {

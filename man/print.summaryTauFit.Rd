@@ -9,7 +9,7 @@
 \arguments{
 \item{x}{an object of class "summaryTauFit"}
 
-\item{...}{additional arguments}
+\item{...}{additional arguments passed to underlying \code{printCoefmat} method.}
 }
 \description{
 Print method for summaryTauFit objects

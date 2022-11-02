@@ -24,7 +24,6 @@
 #'
 #'
 tau.fit <- function(data, t = numeric()) {
-  stopifnot(length(t) <= 1)
   stopifnot(is.numeric(t))
   stopifnot(is.data.frame(data))
 
@@ -37,7 +36,7 @@ tau.fit <- function(data, t = numeric()) {
   event.1 <- data$event[data$arm == 1]
 
   if(length(t) == 0) {
-    t <- min(c(max(surv.time.0), max(surv.time.1)))
+    t <- seq(0, min(c(max(surv.time.0), max(surv.time.1))), length.out = 20)
   }
 
   ## estiamte the survival functions of censoring variable
@@ -62,7 +61,8 @@ tau.fit <- function(data, t = numeric()) {
   orderable.indicator <- ifelse(min.index.1, event.mat.1, orderable.indicator)
 
   ## restricted region indicator
-  restricted.indicator <- ifelse(min.surv.time.mat <= t, 1, 0)
+  # restricted.indicator <- ifelse(min.surv.time.mat <= t, 1, 0)
+  restricted.indicator <- lapply(t, ">=", min.surv.time.mat)
 
   ## G0.hat and G1.hat at the minimum survival time
   G0.val <- apply(X = min.surv.time.mat, MARGIN = 2, FUN = G0.fit_func)
@@ -71,24 +71,27 @@ tau.fit <- function(data, t = numeric()) {
   ## concordance and discordance
   conc <- ifelse(min.index.0, 1, 0)
   conc <- ifelse(min.index.1, -1, conc)
-  conc.ipcw <- ifelse(orderable.indicator * restricted.indicator,
+  conc.ipcw <- ifelse(orderable.indicator * restricted.indicator[[length(t)]],
                       conc / G0.val / G1.val,
                       0)
+  tau.est.seq <- lapply(restricted.indicator, "*", orderable.indicator)
+  tau.est.seq <- lapply(tau.est.seq, ifelse, conc / G0.val / G1.val, 0)
+  tau.est.seq <- sapply(tau.est.seq, sum) / N0 / N1
 
   ## tau inference
-  tau.est <- sum(conc.ipcw) / N0 / N1
+  # tau.est <- sum(conc.ipcw) / N0 / N1
   obj.fit <- list(min.surv.time.mat = min.surv.time.mat,
-                  restricted.indicator = restricted.indicator,
+                  restricted.indicator = restricted.indicator[[length(t)]],
                   orderable.indicator = orderable.indicator,
                   conc.ipcw = conc.ipcw,
-                  tau = tau.est)
+                  tau = tau.est.seq[[length(t)]])
   var.r <- var.random(data, obj.fit)
   var.f <- var.fixed(data, obj.fit)
 
   rval <- list(N0 = N0,
                N1 = N1,
                t = t,
-               tau = tau.est,
+               tau = tau.est.seq,
                var.r = var.r,
                var.f = var.f)
 

@@ -10,10 +10,10 @@
 #' @examples "Later"
 summary.tauFit <- function(object, conf.int = 0.95, ...) {
   tau.fit <- object
-  tau <- tau.fit$tau
+  tau <- tau.fit$tau[[length(tau.fit$t)]]
   se.r <- sqrt(tau.fit$var.r)
   se.f <- sqrt(tau.fit$var.f)
-  rval <- list(N0 = tau.fit$N0, N1 = tau.fit$N1, t = tau.fit$t)
+  rval <- list(N0 = tau.fit$N0, N1 = tau.fit$N1, t = tau.fit$t[length(tau.fit$t)])
 
   tmp <- matrix(c(tau, se.r, tau / se.r,
                   stats::pchisq((tau / se.r) ^ 2, 1, lower.tail = FALSE)),

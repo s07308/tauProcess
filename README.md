@@ -30,7 +30,7 @@ devtools::install_github("s07308/tauProcess")
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+This is a basic example which shows you how to fit a tau process:
 
 ``` r
 library(tauProcess)
@@ -38,8 +38,7 @@ library(tauProcess)
 fit <- tau.fit(data = Inotuzumab)
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`?
-You can include R chunks like so:
+You may use `summary()` to check the statistical inference results:
 
 ``` r
 summary(fit)
@@ -59,13 +58,11 @@ summary(fit)
 #>   0.139       0.0107        0.268       0.0107        0.268
 ```
 
-You’ll still need to render `README.Rmd` regularly, to keep `README.md`
-up-to-date. `devtools::build_readme()` is handy for this. You could also
-use GitHub Actions to re-render `README.Rmd` every time you push. An
-example workflow can be found here:
-<https://github.com/r-lib/actions/tree/v1/examples>.
+Furthermore, `plot()` will provide you the estimated tau process to
+investigate the evolution of treatment effect.
 
-You can also embed plots, for example:
+``` r
+plot(fit)
+```
 
-In that case, don’t forget to commit and push the resulting figure
-files, so they display on GitHub and CRAN.
+<img src="man/figures/README-unnamed-chunk-3-1.png" width="100%" />

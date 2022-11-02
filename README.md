@@ -26,9 +26,7 @@ You can install the development version of tauProcess from
 devtools::install_github("s07308/tauProcess")
 ```
 
-## Usage
-
-## Example
+## Usage & Example
 
 This is a basic example which shows you how to fit a tau process:
 

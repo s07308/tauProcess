@@ -35,6 +35,8 @@ tau.fit <- function(data, t = numeric()) {
   surv.time.1 <- data$surv.time[data$arm == 1]
   event.1 <- data$event[data$arm == 1]
 
+  t <- sort(unique(t))
+
   if(length(t) == 0) {
     t <- seq(0, min(c(max(surv.time.0), max(surv.time.1))), length.out = 20)
   }

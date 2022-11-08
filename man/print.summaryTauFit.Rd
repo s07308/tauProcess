@@ -2,7 +2,7 @@
 % Please edit documentation in R/print.summaryTauFit.R
 \name{print.summaryTauFit}
 \alias{print.summaryTauFit}
-\title{Print method for summaryTauFit objects}
+\title{Print Method for "summaryTauFit" Objects}
 \usage{
 \method{print}{summaryTauFit}(x, ...)
 }
@@ -12,5 +12,9 @@
 \item{...}{additional arguments passed to underlying \code{printCoefmat} method.}
 }
 \description{
-Print method for summaryTauFit objects
+user-friendly format to present the inference results obtained from \code{summary.tauFit}.
+}
+\examples{
+fit <- tau.fit(data = Inotuzumab)
+summary(fit)
 }

@@ -1,7 +1,8 @@
-#' Two-Sample inference based on local Kendall's tau
-#' @description calculate the necessary elements to do inference based on tau
+#' Estimate Local Kendall's Tau Process
+#' @description Estimate the local Kendall's tau process at specified times.
+#' The estimated variances at the last time point under complete randomization design and random allocation rule (urn model) are provided.
 #' @param data a data.frame consisting of `arm`, `surv.time`, `event`.
-#' @param t the specified truncation time.
+#' @param t a sequence of specified times. If the user do not specify the sequence, the default is an equally-spaced sequence from 0 to the last identified time.
 #'
 #' @return an object of class "tauFit" with components
 #' \tabular{ll}{
@@ -13,12 +14,14 @@
 #' \tab \cr
 #' \code{tau} \tab the estiamted local Kendall's tau measure \cr
 #' \tab \cr
-#' \code{var.r} \tab the estimated variance under random grouping design \cr
+#' \code{var.r} \tab the estimated variance under random grouping design (complete randomization design)\cr
 #' \tab \cr
-#' \code{var.f} \tab the estimated variance under fixed grouping design \cr
+#' \code{var.f} \tab the estimated variance under fixed grouping design (random allocation rule / urn model)\cr
 #' }
 #'
-#' @details The estimating formula for tau and variance are proposed by Yi-Cheng Tai, Weijing Wang and Martin T. Wells.
+#' @details The estimation and inference procedure are proposed by Yi-Cheng Tai, Weijing Wang and Martin T. Wells.
+#' The value of local Kendall's tau serves as a clinically meaningful measure of treatment effect.
+#' It supplements the traditional hazard ratio (HR) in non-proportional hazard scenario, which is the case that HR lost its interpretation.
 #'
 #' @export
 #'

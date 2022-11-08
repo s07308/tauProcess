@@ -2,21 +2,23 @@
 % Please edit documentation in R/plot.tauFit.R
 \name{plot.tauFit}
 \alias{plot.tauFit}
-\title{Plot method for \code{tauFit} objects}
+\title{Plot Method for "tauFit" Objects}
 \usage{
 \method{plot}{tauFit}(x, ...)
 }
 \arguments{
-\item{x}{an object of class \code{tauFit}, returned by \code{tau.fit} function.}
+\item{x}{an object of class "tauFit", returned by \code{tau.fit} function}
 
-\item{...}{additional arguments passed to underlying plot method.}
+\item{...}{additional arguments passed to underlying plot method}
 }
 \value{
 a list with components \code{x} and \code{y}.
 }
 \description{
-Plot method for \code{tauFit} objects
+This function plot the estimated local Kendall's tau process obtained from \code{tau.fit}.
+It can be used to monitor the progression of treatment effect.
 }
 \examples{
-"later"
+fit <- tau.fit(data = Inotuzumab)
+plot(fit)
 }

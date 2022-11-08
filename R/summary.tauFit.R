@@ -1,13 +1,16 @@
-#' Summarize the inference of local Kendall's tau
+#' Summarize the Inference Result of Local Kendall's Tau Process at Last Specified Time
 #'
+#' @description This function summarizes the inference results obtained from `tau.fit`.
+#' The results under random grouping design (complete randomization design) and fixed grouping design (random allocation rule / urn model) will be almost the same.
 #' @param object an object of class "tauFit"
 #' @param conf.int the significance level of the confidence interval
-#' @param ... additional arguments
+#' @param ...
 #'
 #' @return an object of class "summaryTauFit"
 #' @export
 #'
-#' @examples "Later"
+#' @examples fit <- tau.fit(data = Inotuzumab)
+#' summary(fit)
 summary.tauFit <- function(object, conf.int = 0.95, ...) {
   tau.fit <- object
   tau <- tau.fit$tau[[length(tau.fit$t)]]

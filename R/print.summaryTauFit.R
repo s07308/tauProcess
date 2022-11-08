@@ -1,9 +1,12 @@
-#' Print method for summaryTauFit objects
+#' Print Method for "summaryTauFit" Objects
 #'
+#' @description user-friendly format to present the inference results obtained from `summary.tauFit`.
 #' @param x an object of class "summaryTauFit"
 #' @param ... additional arguments passed to underlying `printCoefmat` method.
 #'
 #' @export
+#' @examples fit <- tau.fit(data = Inotuzumab)
+#' summary(fit)
 print.summaryTauFit <- function(x, ...) {
   cat(" N0=", x$N0, " N1=", x$N1, " The truncation time is specified as", x$t, "\n")
   cat("\n")

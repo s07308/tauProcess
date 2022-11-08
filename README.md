@@ -28,15 +28,17 @@ devtools::install_github("s07308/tauProcess")
 
 ## Usage & Example
 
-This is a basic example which shows you how to fit a tau process:
+This is a basic example which shows you how to estimate a local
+Kendall’s tau process and make the corresponding statistical inference
+procedure:
 
 ``` r
 library(tauProcess)
-## basic example code
 fit <- tau.fit(data = Inotuzumab)
 ```
 
-You may use `summary()` to check the statistical inference results:
+You may use `summary()` to check the inference results at the largest
+time specified:
 
 ``` r
 summary(fit)
@@ -56,8 +58,8 @@ summary(fit)
 #>   0.139       0.0107        0.268       0.0107        0.268
 ```
 
-Furthermore, `plot()` will provide you the estimated tau process to
-investigate the evolution of treatment effect.
+Furthermore, `plot()` will provide you the estimated local Kendall’s tau
+process to investigate the evolution of treatment effect.
 
 ``` r
 plot(fit)

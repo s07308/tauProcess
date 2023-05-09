@@ -5,7 +5,7 @@
 #' @param ... additional arguments passed to underlying `printCoefmat` method.
 #'
 #' @export
-#' @examples fit <- tau.fit(data = Inotuzumab)
+#' @examples fit <- tau.fit(data = pbc)
 #' summary(fit)
 print.summaryTauFit <- function(x, ...) {
   cat(" N0=", x$N0, " N1=", x$N1, " The truncation time is specified as", x$t, "\n")

@@ -1,6 +1,6 @@
 Package: tauProcess
 Title: Two-Sample Inference Procedure based on Kendall's Tau
-Version: 0.0.0.1000
+Version: 0.0.1.0000
 Authors@R: c(
     person("Yi-Cheng", "Tai", , "s07308@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0003-3298-0552")), 
@@ -9,13 +9,14 @@ Authors@R: c(
     person("Martin T.", "Wells", , "mtw1@cornell.edu", role = c("aut"),
            comment = c(ORCID = "0000-0002-9750-9529")))
 Description: We propose a clinically meaningful measure of effect based on Kendall's tau
-  with censored data. The corresponding inference procedure is also provided. The plot of tau process
-  is an intuitive tool to monitor the evolution of treatment effect.
+  with censored data to accomodate the requirements from addendum to ICH E9 highlighting
+  the interpretability of estimand. The corresponding inference procedure is also provided.
+  The plot of tau process is an intuitive graphical tool to monitor the evolution of treatment effect.
 URL: https://github.com/s07308/tauProcess
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.3
 Imports: 
     stats,
     survival

@@ -2,7 +2,7 @@
 % Please edit documentation in R/summary.tauFit.R
 \name{summary.tauFit}
 \alias{summary.tauFit}
-\title{Summarize the Inference Result of Local Kendall's Tau Process at Last Specified Time}
+\title{Summarize the Inference Result of Tau Process at Last Specified Time}
 \usage{
 \method{summary}{tauFit}(object, conf.int = 0.95, ...)
 }
@@ -11,16 +11,16 @@
 
 \item{conf.int}{the significance level of the confidence interval}
 
-\item{...}{}
+\item{...}{additional arguments passed to underlying summary method}
 }
 \value{
 an object of class "summaryTauFit"
 }
 \description{
 This function summarizes the inference results obtained from \code{tau.fit}.
-The results under random grouping design (complete randomization design) and fixed grouping design (random allocation rule / urn model) will be almost the same.
+The results under random grouping design (complete randomization design) and fixed grouping design (random allocation rule / urn model) would be almost the same with large sample size.
 }
 \examples{
-fit <- tau.fit(data = Inotuzumab)
+fit <- tau.fit(data = pbc)
 summary(fit)
 }

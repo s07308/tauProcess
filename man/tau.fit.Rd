@@ -2,7 +2,7 @@
 % Please edit documentation in R/tau.fit.R
 \name{tau.fit}
 \alias{tau.fit}
-\title{Estimate Local Kendall's Tau Process}
+\title{Estimate the Tau Process}
 \usage{
 tau.fit(data, t = numeric())
 }
@@ -20,7 +20,7 @@ an object of class "tauFit" with components
 \tab \cr
 \code{t} \tab the specified truncation time \cr
 \tab \cr
-\code{tau} \tab the estiamted local Kendall's tau measure \cr
+\code{tau} \tab the estimated value of tau measure \cr
 \tab \cr
 \code{var.r} \tab the estimated variance under random grouping design (complete randomization design)\cr
 \tab \cr
@@ -28,11 +28,11 @@ an object of class "tauFit" with components
 }
 }
 \description{
-Estimate the local Kendall's tau process at specified times.
+Estimate the tau process at specified time points.
 The estimated variances at the last time point under complete randomization design and random allocation rule (urn model) are provided.
 }
 \details{
 The estimation and inference procedure are proposed by Yi-Cheng Tai, Weijing Wang and Martin T. Wells.
-The value of local Kendall's tau serves as a clinically meaningful measure of treatment effect.
-It supplements the traditional hazard ratio (HR) in non-proportional hazard scenario, which is the case that HR lost its interpretation.
+The value of tau measure serves as a clinically meaningful measure of treatment effect.
+It supplements the traditional hazard ratio (HR) under nonproportional hazard scenario.
 }

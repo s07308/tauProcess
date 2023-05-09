@@ -2,7 +2,7 @@
 % Please edit documentation in R/plot.tauFit.R
 \name{plot.tauFit}
 \alias{plot.tauFit}
-\title{Plot Method for "tauFit" Objects}
+\title{Plot the Tau Process}
 \usage{
 \method{plot}{tauFit}(x, ...)
 }
@@ -15,10 +15,10 @@
 a list with components \code{x} and \code{y}.
 }
 \description{
-This function plot the estimated local Kendall's tau process obtained from \code{tau.fit}.
+This function plot the estimated tau process obtained from \code{tau.fit}.
 It can be used to monitor the progression of treatment effect.
 }
 \examples{
-fit <- tau.fit(data = Inotuzumab)
+fit <- tau.fit(data = pbc)
 plot(fit)
 }

@@ -1,16 +1,14 @@
-#' Inotuzumab ozogamicin data
+#' Mayo Clinic Primary Biliary Cholangitis Data
 #'
-#' Phase 3 clinical trial which compared the effects of inotuzumab ozogamicin (group 1) with standard chemotherapy (group 0)
-#' for treating of acute lymphoblastic leulemia. This dataset is obtained by re-digitizing the KM curves from the original medical paper.
-#' Kantarjian HM, DeAngelo DJ, Stelljes M, et al. Inotuzumab Ozogamicin versus Standard Therapy for Acute Lymphoblastic Leukemia. N Engl J Med. 2016;375(8):740-753.
+#' This dataset is obtained from 'pbc' in package 'survival' by excluding the non-randomized individuals.
+#' For background and details of the original dataset, please refer to the document page of 'survival'.
 #'
-#'
-#' @format ## `Inotuzumab`
-#' A data frame with 1621 rows and 3 columns:
+#' @format ## `pbc`
+#' A data frame with 258 rows and 3 columns:
 #' \describe{
-#'   \item{surv.time}{the survival of each subject in the trial (months)}
-#'   \item{event}{censoring indicator (1: observed; 0: censored)}
-#'   \item{arm}{treatment arm (1: treatment; 0: control)}
+#'   \item{surv.time}{the survival of each subject in the trial (days)}
+#'   \item{event}{censoring indicator (1: dead; 0: censored)}
+#'   \item{arm}{treatment arm (1: D-penicillamine; 0: placebo)}
 #' }
-#' @source <https://www.nejm.org/doi/full/10.1056/nejmoa1509277>
-"Inotuzumab"
+#' @source <https://cran.r-project.org/web/packages/survival/index.html>
+"pbc"

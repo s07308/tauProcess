@@ -15,6 +15,6 @@
 user-friendly format to present the inference results obtained from \code{summary.tauFit}.
 }
 \examples{
-fit <- tau.fit(data = Inotuzumab)
+fit <- tau.fit(data = pbc)
 summary(fit)
 }

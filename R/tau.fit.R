@@ -1,5 +1,5 @@
-#' Estimate Local Kendall's Tau Process
-#' @description Estimate the local Kendall's tau process at specified times.
+#' Estimate the Tau Process
+#' @description Estimate the tau process at specified time points.
 #' The estimated variances at the last time point under complete randomization design and random allocation rule (urn model) are provided.
 #' @param data a data.frame consisting of `arm`, `surv.time`, `event`.
 #' @param t a sequence of specified times. If the user do not specify the sequence, the default is an equally-spaced sequence from 0 to the last identified time.
@@ -12,7 +12,7 @@
 #' \tab \cr
 #' \code{t} \tab the specified truncation time \cr
 #' \tab \cr
-#' \code{tau} \tab the estiamted local Kendall's tau measure \cr
+#' \code{tau} \tab the estimated value of tau measure \cr
 #' \tab \cr
 #' \code{var.r} \tab the estimated variance under random grouping design (complete randomization design)\cr
 #' \tab \cr
@@ -20,8 +20,8 @@
 #' }
 #'
 #' @details The estimation and inference procedure are proposed by Yi-Cheng Tai, Weijing Wang and Martin T. Wells.
-#' The value of local Kendall's tau serves as a clinically meaningful measure of treatment effect.
-#' It supplements the traditional hazard ratio (HR) in non-proportional hazard scenario, which is the case that HR lost its interpretation.
+#' The value of tau measure serves as a clinically meaningful measure of treatment effect.
+#' It supplements the traditional hazard ratio (HR) under nonproportional hazard scenario.
 #'
 #' @export
 #'

@@ -16,7 +16,7 @@ A data frame with 258 rows and 3 columns:
 }
 }
 \source{
-\url{https://cran.r-project.org/web/packages/survival/index.html}
+\url{https://cran.r-project.org/package=survival}
 }
 \usage{
 pbc

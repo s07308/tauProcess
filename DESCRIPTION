@@ -1,6 +1,6 @@
 Package: tauProcess
 Title: Tau Measure with Right-Censored Data
-Version: 0.0.1.0000
+Version: 1.0.1.1000
 Authors@R: c(
     person("Yi-Cheng", "Tai", , "s07308@gmail.com", role = c("aut", "cre", "cph"),
            comment = c(ORCID = "0000-0003-3298-0552")), 

@@ -10,5 +10,5 @@
 #'   \item{event}{censoring indicator (1: dead; 0: censored)}
 #'   \item{arm}{treatment arm (1: D-penicillamine; 0: placebo)}
 #' }
-#' @source <https://cran.r-project.org/web/packages/survival/index.html>
+#' @source <https://cran.r-project.org/package=survival>
 "pbc"

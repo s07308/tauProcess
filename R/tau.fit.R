@@ -25,6 +25,7 @@
 #'
 #' @export
 #'
+#' @examples tau.fit(data = pbc)
 #'
 tau.fit <- function(data, t = numeric()) {
   stopifnot(is.numeric(t))

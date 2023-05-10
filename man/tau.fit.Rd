@@ -36,3 +36,7 @@ The estimation and inference procedure are proposed by Yi-Cheng Tai, Weijing Wan
 The value of tau measure serves as a clinically meaningful measure of treatment effect.
 It supplements the traditional hazard ratio (HR) under nonproportional hazard scenario.
 }
+\examples{
+tau.fit(data = pbc)
+
+}

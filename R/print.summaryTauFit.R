@@ -4,6 +4,7 @@
 #' @param x an object of class "summaryTauFit"
 #' @param ... additional arguments passed to underlying `printCoefmat` method.
 #'
+#' @return \value{None}
 #' @export
 #' @examples fit <- tau.fit(data = pbc)
 #' summary(fit)

@@ -11,6 +11,9 @@
 
 \item{...}{additional arguments passed to underlying \code{printCoefmat} method.}
 }
+\value{
+\value{None}
+}
 \description{
 user-friendly format to present the inference results obtained from \code{summary.tauFit}.
 }

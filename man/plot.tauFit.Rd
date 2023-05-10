@@ -19,6 +19,6 @@ This function plot the estimated tau process obtained from \code{tau.fit}.
 It can be used to monitor the progression of treatment effect.
 }
 \examples{
-fit <- tau.fit(data = pbc)
+fit <- tau.fit(data = pbc, type = "b")
 plot(fit)
 }

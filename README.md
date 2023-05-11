@@ -61,7 +61,7 @@ summary(fit)
 ```
 
 Furthermore, `plot()` will provide you the estimated tau process to
-investigate the evolution of treatment effect:
+investigate the progression of treatment effect:
 
 ``` r
 plot(fit, type = "b")

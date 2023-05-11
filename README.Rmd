@@ -43,7 +43,7 @@ You may use `summary()` to check the inference results at the largest time speci
 summary(fit)
 ```
 
-Furthermore, `plot()` will provide you the estimated tau process to investigate the evolution of treatment effect: 
+Furthermore, `plot()` will provide you the estimated tau process to investigate the progression of treatment effect: 
 ```{r tau-process}
 plot(fit, type = "b")
 ```

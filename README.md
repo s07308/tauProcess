@@ -6,16 +6,20 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-In clinical trials, the nonproportional hazard (NPH) scenarios are
-commonly encountered. Under NPH, the classical hazard ratio is no longer
-a meaningful treatment effect measure. Furthermore, the commonly used
-logrank test may lose its power. Several treatment effect measures and
-testing procedures are proposed to overcome these problems, including
-weighted logrank, restricted mean survival time (RMST) and maxcombo
-tests. The tau measure/process proposed is intuitive and clinically
-meaningful to accommodate the requirements from addendum to ICH E9
-highlighting the interpretability of estimand. The inference procedure
-and plot based on tau measure and process are also provided.
+Non-proportional hazard (NPH) scenarios are common in clinical trials.
+Under NPH, the commonly used log-rank test may lose power, and the
+hazard ratio may no longer be a meaningful measure of treatment effect.
+The proposed tau process adheres to the addendum to ICH E9, which
+emphasizes the use of an Estimand defined as “a precise description of
+the treatment effect reflecting the clinical question posed by a given
+clinical trial objective.” At each failure time in one group, the
+survival probability of the other group at that time is calculated and
+compared. The tau process sums over the differences in probabilities up
+to time t, providing an intuitive visual aid for assessing the
+cumulative treatment effect over time. An increasing trend of tau(t) in
+some interval of t indicates that Group 1 consistently shows its
+efficacy during this time period. When tau(t) is positive, subjects in
+Group 1 have longer survival compared to those in Group 0 up to time t.
 
 ## Installation
 

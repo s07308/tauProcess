@@ -4,6 +4,8 @@
 # tauProcess
 
 <!-- badges: start -->
+
+[![](https://cranlogs.r-pkg.org/badges/tauProcess)](https://cran.r-project.org/package=tauProcess)
 <!-- badges: end -->
 
 Non-proportional hazard (NPH) scenarios are common in clinical trials.
@@ -20,6 +22,12 @@ cumulative treatment effect over time. An increasing trend of tau(t) in
 some interval of t indicates that Group 1 consistently shows its
 efficacy during this time period. When tau(t) is positive, subjects in
 Group 1 have longer survival compared to those in Group 0 up to time t.
+
+For the details or theoretical investigation of the tau process method,
+the article has been published in *Pharmaceutical Statistics*:
+[Two-sample inference procedures under nonproportional
+hazards](https://doi.org/10.1002/pst.2324) by Yi-Cheng Tai, Weijing Wang
+and Martin T. Wells.
 
 ## Installation
 

@@ -13,7 +13,7 @@ Description: A clinically meaningful measure of treatment effect based on
     procedure. The plot of tau process is provided as a graphical tool
     for monitoring the progression. It complements another summary measures 
     under nonproportional hazards. For details, please refer to 
-    Tai, Wang and Wells (2022) <doi:10.48550/arXiv.2207.14445>. 
+    Tai, Wang and Wells (2023) <doi:10.1002/pst.2324>. 
 URL: https://github.com/s07308/tauProcess
 License: MIT + file LICENSE
 Encoding: UTF-8

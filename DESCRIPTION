@@ -1,6 +1,6 @@
 Package: tauProcess
 Title: Tau Measure with Right-Censored Data
-Version: 2.1.1
+Version: 2.1.2
 Authors@R: c(
     person("Yi-Cheng", "Tai", , "s07308@gmail.com", role = c("aut", "cre", "cph"),
            comment = c(ORCID = "0000-0003-3298-0552")), 
@@ -25,4 +25,3 @@ Imports:
 Depends: 
     R (>= 2.10)
 LazyData: true
-

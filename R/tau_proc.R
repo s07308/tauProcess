@@ -16,8 +16,6 @@
 #' }
 #'
 #' @details The estimation method proposed by Yi-Cheng Tai, Weijing Wang and Martin T. Wells to estimate tau process with or without cure fraction.
-#' The value of tau measure serves as a clinically meaningful measure of treatment effect.
-#' It supplements the traditional hazard ratio (HR) under nonproportional hazard scenario.
 #' @export
 #'
 #' @examples tau_proc(data = pbc)

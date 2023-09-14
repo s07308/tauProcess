@@ -4,30 +4,18 @@
 # tauProcess
 
 <!-- badges: start -->
-
-[![](https://cranlogs.r-pkg.org/badges/tauProcess)](https://cran.r-project.org/package=tauProcess)
 <!-- badges: end -->
 
-Non-proportional hazard (NPH) scenarios are common in clinical trials.
-Under NPH, the commonly used log-rank test may lose power, and the
-hazard ratio may no longer be a meaningful measure of treatment effect.
-The proposed tau process adheres to the addendum to ICH E9, which
-emphasizes the use of an Estimand defined as “a precise description of
-the treatment effect reflecting the clinical question posed by a given
-clinical trial objective.” At each failure time in one group, the
-survival probability of the other group at that time is calculated and
-compared. The tau process sums over the differences in probabilities up
-to time t, providing an intuitive visual aid for assessing the
-cumulative treatment effect over time. An increasing trend of tau(t) in
-some interval of t indicates that Group 1 consistently shows its
-efficacy during this time period. When tau(t) is positive, subjects in
-Group 1 have longer survival compared to those in Group 0 up to time t.
-
-For the details or theoretical investigation of the tau process method,
-the article has been published in *Pharmaceutical Statistics*:
-[Two-sample inference procedures under nonproportional
-hazards](https://doi.org/10.1002/pst.2324) by Yi-Cheng Tai, Weijing Wang
-and Martin T. Wells.
+In clinical trials, the nonproportional hazard (NPH) scenarios are
+commonly encountered. Under NPH, the classical hazard ratio is no longer
+a meaningful treatment effect measure. Furthermore, the commonly used
+logrank test may lose its power. Several treatment effect measures and
+testing procedures are proposed to overcome these problems, including
+weighted logrank, restricted mean survival time (RMST) and maxcombo
+tests. The tau measure/process proposed is intuitive and clinically
+meaningful to accommodate the requirements from addendum to ICH E9
+highlighting the interpretability of estimand. The inference procedure
+and plot based on tau measure and process are also provided.
 
 ## Installation
 
@@ -69,10 +57,27 @@ summary(fit)
 ```
 
 Furthermore, `plot()` will provide you the estimated tau process to
-investigate the progression of treatment effect:
+investigate the evolution of treatment effect:
 
 ``` r
 plot(fit, type = "b")
 ```
 
-<img src="man/figures/README-tau-process-1.png" width="100%" />
+<img src="man/figures/README-plot-tau-process-no-cure-1.png" width="100%" />
+
+For the case with possibly existing cure fraction, we may estimate the
+tau process for the susceptible subgroups:
+
+``` r
+fit_cure <- tau_proc(pbc, cure = TRUE)
+```
+
+The bootstrap method is recommended to do statistical inference about
+the tau process for susceptible subgroups. As the case with no cure
+fraction, we may plot the estimated tau process as well:
+
+``` r
+plot(fit_cure, type = "b")
+```
+
+<img src="man/figures/README-plot-tau-process-with-cure-1.png" width="100%" />

@@ -110,8 +110,8 @@ pchisq((boot_results$t0 / sd_est) ^ 2, df = 1, lower.tail = FALSE)
 #> [1] 0.2730033
 ```
 
-Under sufficient follow-up, $\hat{\tau}_a(t)$, where
-$t = X_{(n_0)} \wedge X_{(n_1)}$ can be treated as $\hat{\tau}_a$. The
+Under sufficient follow-up, $`\hat{\tau}_a(t)`$, where
+$`t = X_{(n_0)} \wedge X_{(n_1)}`$ can be treated as $\hat{\tau}_a$. The
 p-value with respect to the null $H_0: \tau_a = 0$ may be calculated by
 the following steps:
 

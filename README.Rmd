@@ -80,7 +80,7 @@ sd_est <- sd(boot_results$t)
 pchisq((boot_results$t0 / sd_est) ^ 2, df = 1, lower.tail = FALSE)
 ```
 
-Under sufficient follow-up, $\hat{\tau}_a(X_{(n_0)} \wedge X_{(n_1)}) = \hat{\tau}_a$. The p-value with respect to the null $H_0: \tau_a = 0$ may be calculated by the following steps:
+Under sufficient follow-up, $\hat{\tau}_a(X_{(n_0)} \wedge X_{(n_1)})$. The p-value with respect to the null $H_0: \tau_a = 0$ may be calculated by the following steps:
 ```{r bootstrap-2}
 # install.packages("boot")
 library(boot)

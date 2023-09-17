@@ -57,8 +57,8 @@ fit_cure <- tau_proc(pbc, cure = TRUE)
 ```
 
 <br>
-
 **Bootstrap**
+<br>
 The bootstrap method is recommended to make statistical inference about the tau process for susceptible subgroups. For given time point $t$, we may make an inference on $\tau_a(t)$. The p-value with respect to the null $H_0: \tau_a(t) = 0$ may be calculated by the following steps:
 ```{r bootstrap-1}
 # install.packages("boot")
@@ -80,11 +80,7 @@ sd_est <- sd(boot_results$t)
 pchisq((boot_results$t0 / sd_est) ^ 2, df = 1, lower.tail = FALSE)
 ```
 
-Under sufficient follow-up,
-$$
-\hat{\tau}_a(X_{(n_0)} \wedge X_{(n_1)}) = \hat{\tau}_a(\infty)=\hat{\tau}_a.
-$$
-The p-value with respect to the null $H_0: \tau_a = 0$ may be calculated by the following steps:
+Under sufficient follow-up, $\hat{\tau}_a(X_{(n_0)} \wedge X_{(n_1)}) = \hat{\tau}_a(\infty)=\hat{\tau}_a$. The p-value with respect to the null $H_0: \tau_a = 0$ may be calculated by the following steps:
 ```{r bootstrap-2}
 # install.packages("boot")
 library(boot)

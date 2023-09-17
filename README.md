@@ -107,10 +107,10 @@ boot_results <- boot(pbc, statistic = boot_fun, t = t, R = num_boot, strata = pb
 sd_est <- sd(boot_results$t)
 
 pchisq((boot_results$t0 / sd_est) ^ 2, df = 1, lower.tail = FALSE)
-#> [1] 0.2684081
+#> [1] 0.2729425
 ```
 
-Under sufficient follow-up, $\hat{\tau}_a(t)$ can be treated as
+Under sufficient follow-up $\hat{\tau}_a(t)$ can be treated as
 $\hat{\tau}_a$, where $t = X_{(n_0)} \wedge X_{(n_1)}$. The p-value with
 respect to the null $H_0: \tau_a = 0$ may be calculated by the following
 steps:
@@ -132,7 +132,7 @@ boot_results <- boot(pbc, statistic = boot_fun, R = num_boot, strata = pbc$arm)
 sd_est <- sd(boot_results$t)
 
 pchisq((boot_results$t0 / sd_est) ^ 2, df = 1, lower.tail = FALSE)
-#> [1] 0.804619
+#> [1] 0.7986194
 ```
 
 As the case with no cure fraction, we may plot the estimated tau process

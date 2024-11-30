@@ -27,17 +27,16 @@
 #'
 #' @examples tau.fit(data = pbc)
 #'
-tau.fit <- function(data, t = numeric()) {
+tau.fit <- function(time, status, arm, t = numeric()) {
   stopifnot(is.numeric(t))
-  stopifnot(is.data.frame(data))
 
-  n <- length(data$surv.time)
-  N0 <- sum(data$arm == 0)
-  N1 <- sum(data$arm == 1)
-  surv.time.0 <- data$surv.time[data$arm == 0]
-  event.0 <- data$event[data$arm == 0]
-  surv.time.1 <- data$surv.time[data$arm == 1]
-  event.1 <- data$event[data$arm == 1]
+  n <- length(time)
+  N0 <- sum(arm == 0)
+  N1 <- sum(arm == 1)
+  surv.time.0 <- time[arm == 0]
+  event.0 <- status[arm == 0]
+  surv.time.1 <- time[arm == 1]
+  event.1 <- status[arm == 1]
 
   t <- sort(unique(t))
 
@@ -91,8 +90,8 @@ tau.fit <- function(data, t = numeric()) {
                   orderable.indicator = orderable.indicator,
                   conc.ipcw = conc.ipcw,
                   tau = tau.est.seq[[length(t)]])
-  var.r <- var.random(data, obj.fit)
-  var.f <- var.fixed(data, obj.fit)
+  var.r <- var.random(time, status, arm, obj.fit)
+  var.f <- var.fixed(time, status, arm, obj.fit)
 
   rval <- list(N0 = N0,
                N1 = N1,

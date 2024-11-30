@@ -19,13 +19,13 @@
 #' @export
 #'
 #' @examples tau_proc(data = pbc)
-tau_proc <- function(data, t = NULL, cure = FALSE) {
+tau_proc <- function(time, status, arm, t = NULL, cure = FALSE) {
 
-  ########
-  time <- data$surv.time
-  status <- data$event
-  arm <- data$arm
-  ########
+  # ########
+  # time <- data$surv.time
+  # status <- data$event
+  # arm <- data$arm
+  # ########
 
   #### sample size ####
   n <- length(time)

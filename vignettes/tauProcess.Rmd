@@ -1,0 +1,141 @@
+---
+title: "Vignette for tauProcess package: Measuring the two-sample treatment effect"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette for tauProcess package: Measuring the two-sample treatment effect}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(tauProcess)
+```
+
+## Introduction
+
+In immunotherapy clinical trials, the endpoints of interest typically involve the time until a specified event occurs. For instance, overall survival (OS) is defined as the time from the start of the study until death. Under the proportional hazards assumption, the hazard ratio (HR) is commonly used as a measure of treatment effect between two groups. However, in immunotherapy clinical trials, the proportional hazards assumption is often violated, making the HR an unsuitable measure of treatment effect. To address this issue, we propose the tau process, a measure inspired by Kendall's tau, to quantify treatment effects between two samples over time without relying on the proportional hazards assumption. The tau process also serves as a graphical tool to track the progression of treatment effects. This vignette demonstrates the use of the R package `tauProcess` for making inferences about the tau process.
+
+## Sample Data
+
+Throughout this vignette, we use the `pbc` dataset, originally provided in the R package `survival`, to demonstrate the inference procedure and interpretation of the tau process. We only consider the observations with complete covariates, excluding transplants and those not assigned to randomization. Details about the original dataset can be found in the `survival` package documentation:
+
+```{r eval=FALSE}
+?survival::pbc
+```
+
+### Variables in the `pbc` Dataset
+
+- **surv.time**: Number of days between registration and the earlier of death or study analysis in July 1986.
+- **event**: Endpoint status (0 for censored, 1 for deceased).
+- **arm**: Treatment group indicator (1 for D-penicillamine, 0 for placebo).
+
+### Kaplan-Meier Curves
+
+Below are the Kaplan-Meier curves for the two treatment groups:
+
+```{r, echo=FALSE, message=FALSE, fig.width=7, fig.height=5}
+library(survival)
+fit <- survfit(Surv(surv.time, event) ~ arm, data = tauProcess::pbc)
+
+plot(fit, lty = c(2, 1))
+legend("bottomleft", legend = c("D-penicillamine", "Placebo"), lty = c(1, 2))
+```
+
+## Tau Measure and Tau Process
+
+The tau process is defined as the difference in concordance and discordance probabilities up to a specified time \(t\):
+
+\begin{align*}
+  \tau(t) &= \Pr(T_1 \wedge t > T_0) - \Pr(T_1 < T_0 \wedge t) \\
+          &= \int_{0}^{t} S_1(u) dF_0(u) - \int_{0}^{t} S_0(u) dF_1(u)
+\end{align*}
+
+where \(S_{\ell}(u) = \Pr(T_{\ell} > u)\) and \(F_{\ell}(u) = 1 - S_{\ell}(u)\). This represents the proportion of individuals who benefit from the treatment compared to those who experience worse outcomes. The identifiability of the tau process depends on the censoring distribution. When \(t\) exceeds the upper support of the censoring distribution, the tau process becomes unidentifiable. If the support of censoring covers the failure time supports, the tau measure \(\tau(\infty)\) is identifiable.
+
+The tau process estimation in this package is based on U-statistics and inverse-probability-of-censoring-weighting (IPCW). The limiting distribution is derived using U-statistics theory and martingale theory.
+
+### Function Usage
+
+The function `tau.fit()` estimates the tau process. Its arguments are:
+
+- **time**: Time-to-event vector.
+- **status**: Event indicator vector (1 for event, 0 for censoring).
+- **arm**: Treatment group indicator vector (1 for treatment, 0 for control).
+- **t**: Optional scalar specifying truncation time (default: minimum of the largest observed times in both groups).
+
+Below is an example:
+
+```{r, message=FALSE, fig.width=7, fig.height=5}
+devtools::load_all()
+data(pbc)
+fit <- tau.fit(time = pbc$surv.time,
+               status = pbc$event,
+               arm = pbc$arm)
+summary(fit)
+plot(fit, type = "b")
+```
+
+In this example, the tau process value at \(t=4523\) is \(-0.0503\) with a 95% confidence interval \((-0.228, 0.127)\) and a p-value of 0.58.
+
+## Tau Process with Mixture Cure Model
+
+We develop nonparametric inference methods for comparing survival data across two samples, tailored for clinical trials of cancer therapies with durable effects. The mixture cure model analyzes cure rates for long-term survivors and survival functions for susceptible individuals.
+
+The survival function is modeled as:
+
+\[
+S_{\ell}(t) = S_{a,\ell}(t) (1-\eta_{\ell}) + \eta_{\ell},
+\]
+
+where \(S_{a, \ell}(t)\) represents the susceptible group survival function, and \(\eta_{\ell}\) represents the cure rate. The treatment effect for susceptible groups is quantified using the susceptible tau process:
+
+\[
+\tau_{a}(t) = \int_{0}^{t} S_{a,1}(u) dF_{a,0}(u) - \int_{0}^{t} S_{a,0}(u) dF_{a,1}(u).
+\]
+
+### Function Usage
+
+The function `tau_proc()` estimates the susceptible tau process when `cure = TRUE`:
+
+```{r}
+fit_cure <- tau_proc(pbc$surv.time, pbc$event, pbc$arm, cure = TRUE)
+print(fit_cure)
+```
+
+The output includes time points, tau process values, and estimated cure rates. Use `plot()` to visualize:
+
+```{r, fig.width=7, fig.height=5}
+plot(fit_cure, type = "b")
+```
+
+### Inference Using Bootstrap
+
+Bootstrap methods can be used for inference on the susceptible tau process. Below is an example to test \(\tau_a(\infty) = 0\):
+
+```{r, message=FALSE}
+library(boot)
+
+boot_fun <- function(data, indices) {
+  d <- data[indices, ]
+  tau_fit <- tau_proc(d$surv.time, d$event, d$arm, cure = TRUE)
+  tail(tau_fit$vals_tau_proc, 1)
+}
+
+num_boot <- 5000
+boot_results <- boot(pbc, statistic = boot_fun, R = num_boot, strata = pbc$arm)
+sd_est <- sd(boot_results$t)
+
+pchisq((boot_results$t0 / sd_est) ^ 2, df = 1, lower.tail = FALSE)
+```
+
+## Conclusion
+
+Several alternative treatment effect measures have been proposed, such as differences in restricted mean survival time (RMST). The tau process complements these measures by addressing non-proportional hazards scenarios. It is robust to extreme failure times and provides a rank-based alternative for analyzing treatment effects. We hope this vignette serves as a helpful guide for clinical researchers to explore treatment effects thoroughly.
+

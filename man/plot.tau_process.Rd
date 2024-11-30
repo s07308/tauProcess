@@ -19,6 +19,6 @@ This function plot the estimated tau process with/withour cure fraction obtained
 It can be used to monitor the progression of treatment effect (for susceptible subgroups).
 }
 \examples{
-fit <- tau_proc(data = pbc)
+fit <- tau_proc(pbc$surv.time, pbc$event, pbc$arm)
 plot(fit)
 }

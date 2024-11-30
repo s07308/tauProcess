@@ -8,7 +8,7 @@
 #' @return a list with components `x` and `y`.
 #' @export
 #'
-#' @examples fit <- tau.fit(data = pbc)
+#' @examples fit <- tau.fit(pbc$surv.time, pbc$event, pbc$arm)
 #' plot(fit, type = "b")
 plot.tauFit <- function(x, ...) {
   xx <- x$t

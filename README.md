@@ -44,8 +44,9 @@ This is a basic example which shows you how to estimate the tau process
 and make the corresponding statistical inference:
 
 ``` r
-library(tauProcess)
-fit <- tau.fit(data = pbc)
+devtools::load_all()
+#> ℹ Loading tauProcess
+fit <- tau.fit(pbc$surv.time, pbc$event, pbc$arm)
 ```
 
 You may use `summary()` to check the inference results at the largest
@@ -80,7 +81,7 @@ For the case with possibly existing cure fraction, we may estimate the
 tau process for the susceptible subgroups:
 
 ``` r
-fit_cure <- tau_proc(pbc, cure = TRUE)
+fit_cure <- tau_proc(pbc$surv.time, pbc$event, pbc$arm, cure = TRUE)
 ```
 
 <br> **Bootstrap** <br> The bootstrap method is recommended to make
@@ -95,7 +96,7 @@ library(boot)
 
 boot_fun <- function(data, indices, t) {
   d <- data[indices, ]
-  tau_fit <- tau_proc(d, t = t, cure = TRUE)
+  tau_fit <- tau_proc(d$surv.time, d$event, d$arm, t = t, cure = TRUE)
   
   tau_fit$vals_tau_proc
 }
@@ -107,7 +108,7 @@ boot_results <- boot(pbc, statistic = boot_fun, t = t, R = num_boot, strata = pb
 sd_est <- sd(boot_results$t)
 
 pchisq((boot_results$t0 / sd_est) ^ 2, df = 1, lower.tail = FALSE)
-#> [1] 0.2768823
+#> [1] 0.2728661
 ```
 
 If we let $t = X_{(n_0)} \wedge X_{(n_1)}$, $\hat{\tau}_a(t)$ can be
@@ -121,7 +122,7 @@ library(boot)
 
 boot_fun <- function(data, indices) {
   d <- data[indices, ]
-  tau_fit <- tau_proc(d, cure = TRUE)
+  tau_fit <- tau_proc(d$surv.time, d$event, d$arm, cure = TRUE)
   
   tail(tau_fit$vals_tau_proc, 1)
 }
@@ -132,7 +133,7 @@ boot_results <- boot(pbc, statistic = boot_fun, R = num_boot, strata = pbc$arm)
 sd_est <- sd(boot_results$t)
 
 pchisq((boot_results$t0 / sd_est) ^ 2, df = 1, lower.tail = FALSE)
-#> [1] 0.7988995
+#> [1] 0.799903
 ```
 
 As the case with no cure fraction, we may plot the estimated tau process

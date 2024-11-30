@@ -9,7 +9,7 @@
 #' @return an object of class "summaryTauFit"
 #' @export
 #'
-#' @examples fit <- tau.fit(data = pbc)
+#' @examples fit <- tau.fit(pbc$surv.time, pbc$event, pbc$arm)
 #' summary(fit)
 summary.tauFit <- function(object, conf.int = 0.95, ...) {
   tau.fit <- object

@@ -4,10 +4,14 @@
 \alias{tau_proc}
 \title{Estimate the Tau Process with/without cure fraction}
 \usage{
-tau_proc(data, t = NULL, cure = FALSE)
+tau_proc(time, status, arm, t = NULL, cure = FALSE)
 }
 \arguments{
-\item{data}{a data.frame consisting of \code{arm}, \code{surv.time}, \code{event}.}
+\item{time}{a numerical vector of survival times.}
+
+\item{status}{endpoint status (0 for censored, 1 for deceased).}
+
+\item{arm}{treatment group indicator (1 for treated, 0 for control).}
 
 \item{t}{a sequence of specified times. If the user do not specify the sequence, the default is an equally-spaced sequence from 0 to the last identified time.}
 
@@ -32,5 +36,5 @@ Estimate the Tau Process with/without cure fraction
 The estimation method proposed by Yi-Cheng Tai, Weijing Wang and Martin T. Wells to estimate tau process with or without cure fraction.
 }
 \examples{
-tau_proc(data = pbc)
+tau_proc(pbc$surv.time, pbc$event, pbc$arm, cure = TRUE)
 }

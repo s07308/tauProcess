@@ -4,10 +4,14 @@
 \alias{tau.fit}
 \title{Estimate the Tau Process}
 \usage{
-tau.fit(data, t = numeric())
+tau.fit(time, status, arm, t = numeric())
 }
 \arguments{
-\item{data}{a data.frame consisting of \code{arm}, \code{surv.time}, \code{event}.}
+\item{time}{a numerical vector of survival times.}
+
+\item{status}{endpoint status (0 for censored, 1 for deceased).}
+
+\item{arm}{treatment group indicator (1 for treated, 0 for control).}
 
 \item{t}{a sequence of specified times. If the user do not specify the sequence, the default is an equally-spaced sequence from 0 to the last identified time.}
 }
@@ -37,6 +41,6 @@ The value of tau measure serves as a clinically meaningful measure of treatment 
 It supplements the traditional hazard ratio (HR) under nonproportional hazard scenario.
 }
 \examples{
-tau.fit(data = pbc)
+tau.fit(pbc$surv.time, pbc$event, pbc$arm)
 
 }

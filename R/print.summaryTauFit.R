@@ -6,7 +6,7 @@
 #'
 #' @return None
 #' @export
-#' @examples fit <- tau.fit(data = pbc)
+#' @examples fit <- tau.fit(pbc$surv.time, pbc$event, pbc$arm)
 #' summary(fit)
 print.summaryTauFit <- function(x, ...) {
   cat(" N0=", x$N0, " N1=", x$N1, " The truncation time is specified as", x$t, "\n")

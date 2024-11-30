@@ -15,7 +15,7 @@ knitr::opts_chunk$set(
 ```
 
 ```{r setup}
-library(tauProcess)
+devtools::load_all()
 ```
 
 ## Introduction
@@ -41,8 +41,7 @@ Throughout this vignette, we use the `pbc` dataset, originally provided in the R
 Below are the Kaplan-Meier curves for the two treatment groups:
 
 ```{r, echo=FALSE, message=FALSE, fig.width=7, fig.height=5}
-library(survival)
-fit <- survfit(Surv(surv.time, event) ~ arm, data = tauProcess::pbc)
+fit <- survival::survfit(survival::Surv(surv.time, event) ~ arm, data = pbc)
 
 plot(fit, lty = c(2, 1))
 legend("bottomleft", legend = c("D-penicillamine", "Placebo"), lty = c(1, 2))
@@ -73,8 +72,6 @@ The function `tau.fit()` estimates the tau process. Its arguments are:
 Below is an example:
 
 ```{r, message=FALSE, fig.width=7, fig.height=5}
-devtools::load_all()
-data(pbc)
 fit <- tau.fit(time = pbc$surv.time,
                status = pbc$event,
                arm = pbc$arm)

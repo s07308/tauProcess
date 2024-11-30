@@ -1,6 +1,8 @@
 #' Estimate the Tau Process with/without cure fraction
 #'
-#' @param data a data.frame consisting of `arm`, `surv.time`, `event`.
+#' @param time a numerical vector of survival times.
+#' @param status endpoint status (0 for censored, 1 for deceased).
+#' @param arm treatment group indicator (1 for treated, 0 for control).
 #' @param t a sequence of specified times. If the user do not specify the sequence, the default is an equally-spaced sequence from 0 to the last identified time.
 #' @param cure a boolean variable indicating whether to consider the cure fractions.
 #'
@@ -18,7 +20,7 @@
 #' @details The estimation method proposed by Yi-Cheng Tai, Weijing Wang and Martin T. Wells to estimate tau process with or without cure fraction.
 #' @export
 #'
-#' @examples tau_proc(data = pbc)
+#' @examples tau_proc(pbc$surv.time, pbc$event, pbc$arm, cure = TRUE)
 tau_proc <- function(time, status, arm, t = NULL, cure = FALSE) {
 
   # ########
@@ -33,8 +35,8 @@ tau_proc <- function(time, status, arm, t = NULL, cure = FALSE) {
   N1 <- sum(arm == 1)
   #####################
 
-  if(is.na(N0)) print(sum(is.na(data$arm == 0)))
-  if(is.na(N1)) print(sum(is.na(data$arm == 1)))
+  if(is.na(N0)) print(sum(is.na(arm == 0)))
+  if(is.na(N1)) print(sum(is.na(arm == 1)))
   if(!(N0 > 0 & N1 > 0)) return(NaN)
 
   #### two-sample data ####

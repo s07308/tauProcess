@@ -21,6 +21,6 @@ This function summarizes the inference results obtained from \code{tau.fit}.
 The results under random grouping design (complete randomization design) and fixed grouping design (random allocation rule / urn model) would be almost the same with large sample size.
 }
 \examples{
-fit <- tau.fit(data = pbc)
+fit <- tau.fit(pbc$surv.time, pbc$event, pbc$arm)
 summary(fit)
 }

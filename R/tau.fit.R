@@ -1,7 +1,9 @@
 #' Estimate the Tau Process
 #' @description Estimate the tau process at specified time points.
 #' The estimated variances at the last time point under complete randomization design and random allocation rule (urn model) are provided.
-#' @param data a data.frame consisting of `arm`, `surv.time`, `event`.
+#' @param time a numerical vector of survival times.
+#' @param status endpoint status (0 for censored, 1 for deceased).
+#' @param arm treatment group indicator (1 for treated, 0 for control).
 #' @param t a sequence of specified times. If the user do not specify the sequence, the default is an equally-spaced sequence from 0 to the last identified time.
 #'
 #' @return an object of class "tauFit" with components
@@ -25,7 +27,7 @@
 #'
 #' @export
 #'
-#' @examples tau.fit(data = pbc)
+#' @examples tau.fit(pbc$surv.time, pbc$event, pbc$arm)
 #'
 tau.fit <- function(time, status, arm, t = numeric()) {
   stopifnot(is.numeric(t))

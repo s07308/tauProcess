@@ -18,6 +18,6 @@ None
 user-friendly format to present the inference results obtained from \code{summary.tauFit}.
 }
 \examples{
-fit <- tau.fit(data = pbc)
+fit <- tau.fit(pbc$surv.time, pbc$event, pbc$arm)
 summary(fit)
 }

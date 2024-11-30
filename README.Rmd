@@ -37,8 +37,8 @@ devtools::install_github("s07308/tauProcess")
 This is a basic example which shows you how to estimate the tau process and make the corresponding statistical inference:
 
 ```{r example}
-library(tauProcess)
-fit <- tau.fit(data = pbc)
+devtools::load_all()
+fit <- tau.fit(pbc$surv.time, pbc$event, pbc$arm)
 ```
 
 You may use `summary()` to check the inference results at the largest time specified:
@@ -53,7 +53,7 @@ plot(fit, type = "b")
 
 For the case with possibly existing cure fraction, we may estimate the tau process for the susceptible subgroups:
 ```{r fit-cure}
-fit_cure <- tau_proc(pbc, cure = TRUE)
+fit_cure <- tau_proc(pbc$surv.time, pbc$event, pbc$arm, cure = TRUE)
 ```
 
 <br>
@@ -66,7 +66,7 @@ library(boot)
 
 boot_fun <- function(data, indices, t) {
   d <- data[indices, ]
-  tau_fit <- tau_proc(d, t = t, cure = TRUE)
+  tau_fit <- tau_proc(d$surv.time, d$event, d$arm, t = t, cure = TRUE)
   
   tau_fit$vals_tau_proc
 }
@@ -88,7 +88,7 @@ library(boot)
 
 boot_fun <- function(data, indices) {
   d <- data[indices, ]
-  tau_fit <- tau_proc(d, cure = TRUE)
+  tau_fit <- tau_proc(d$surv.time, d$event, d$arm, cure = TRUE)
   
   tail(tau_fit$vals_tau_proc, 1)
 }

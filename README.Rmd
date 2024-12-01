@@ -37,7 +37,7 @@ devtools::install_github("s07308/tauProcess")
 This is a basic example which shows you how to estimate the tau process and make the corresponding statistical inference:
 
 ```{r example}
-devtools::load_all()
+library(tauProcess)
 fit <- tau.fit(pbc$surv.time, pbc$event, pbc$arm)
 ```
 

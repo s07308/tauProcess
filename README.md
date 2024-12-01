@@ -44,8 +44,7 @@ This is a basic example which shows you how to estimate the tau process
 and make the corresponding statistical inference:
 
 ``` r
-devtools::load_all()
-#> ℹ Loading tauProcess
+library(tauProcess)
 fit <- tau.fit(pbc$surv.time, pbc$event, pbc$arm)
 ```
 
@@ -108,7 +107,7 @@ boot_results <- boot(pbc, statistic = boot_fun, t = t, R = num_boot, strata = pb
 sd_est <- sd(boot_results$t)
 
 pchisq((boot_results$t0 / sd_est) ^ 2, df = 1, lower.tail = FALSE)
-#> [1] 0.2728661
+#> [1] 0.2663491
 ```
 
 If we let $t = X_{(n_0)} \wedge X_{(n_1)}$, $\hat{\tau}_a(t)$ can be
@@ -133,7 +132,7 @@ boot_results <- boot(pbc, statistic = boot_fun, R = num_boot, strata = pbc$arm)
 sd_est <- sd(boot_results$t)
 
 pchisq((boot_results$t0 / sd_est) ^ 2, df = 1, lower.tail = FALSE)
-#> [1] 0.799903
+#> [1] 0.7991084
 ```
 
 As the case with no cure fraction, we may plot the estimated tau process
